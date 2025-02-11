@@ -6,7 +6,7 @@ homepage: https://github.com/terrabythia/dart_chromecast
 environment:
   sdk: ">=2.12.0 <3.0.0"
 
-pendencies:
+dependencies:
   universal_io: ^2.0.4
   protobuf: ^2.1.0
   http: ^0.13.5
