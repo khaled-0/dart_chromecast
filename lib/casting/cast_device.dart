@@ -1,4 +1,3 @@
-import 'dart:convert' show utf8;
 import 'dart:convert';
 import 'dart:typed_data';
 
@@ -134,5 +133,11 @@ class CastDevice {
       default:
         return GoogleCastModelType.NonGoogle;
     }
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (other is! CastDevice) return false;
+    return this.host == other.host && this.port == other.port;
   }
 }
