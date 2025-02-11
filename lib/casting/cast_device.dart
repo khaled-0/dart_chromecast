@@ -1,5 +1,5 @@
-import 'dart:convert';
 import 'dart:convert' show utf8;
+import 'dart:convert';
 import 'dart:typed_data';
 
 import 'package:http/http.dart' as http;
@@ -59,7 +59,7 @@ class CastDevice {
     initDeviceInfo();
   }
 
-  void initDeviceInfo() async {
+  Future<void> initDeviceInfo() async {
     if (CastDeviceType.ChromeCast == deviceType) {
       if (null != attr && null != attr!['fn']) {
         _friendlyName = utf8.decode(attr!['fn']!);
@@ -83,12 +83,12 @@ class CastDevice {
 
           if (deviceInfo['name'] != null && deviceInfo['name'] != 'Unknown') {
             _friendlyName = deviceInfo['name'];
-          } else if (deviceInfo['ssid'] != null) {
+          } else if (deviceInfo['device_info']['ssid'] != null) {
             _friendlyName = deviceInfo['ssid'];
           }
 
-          if (deviceInfo['model_name'] != null) {
-            _modelName = deviceInfo['model_name'];
+          if (deviceInfo['device_info']['model_name'] != null) {
+            _modelName = deviceInfo['device_info']['model_name'];
           }
         } catch (exception) {
           print(exception.toString());
